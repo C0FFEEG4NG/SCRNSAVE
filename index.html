@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SCRNSAVE</title>
+  <title>Rainbow Screensaver</title>
   <style>
     * {
       margin: 0;
@@ -14,8 +14,18 @@
     body, html {
       width: 100%;
       height: 100%;
-      background: black;
       overflow: hidden;
+      background: linear-gradient(270deg, 
+        #ff0000, #ff9900, #ffff00, 
+        #33cc33, #3399ff, #9900cc, #ff0066, #ff0000);
+      background-size: 1600% 1600%;
+      animation: bgRainbow 30s ease infinite;
+    }
+
+    @keyframes bgRainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .thing {
@@ -23,9 +33,11 @@
       width: 50px;
       height: 50px;
       border-radius: 50%;
-      background: hsl(calc(var(--hue) * 1deg), 100%, 50%);
+      background: hsl(calc(var(--hue) * 1deg), 100%, 70%);
+      box-shadow: 0 0 20px hsla(calc(var(--hue) * 1deg), 100%, 70%, 0.8),
+                  0 0 40px hsla(calc(var(--hue) * 1deg), 100%, 70%, 0.5);
       animation: floaty 8s ease-in-out infinite;
-      mix-blend-mode: difference;
+      mix-blend-mode: screen;
     }
 
     @keyframes floaty {
@@ -35,7 +47,7 @@
       }
       50% {
         transform: translateY(-300px) scale(1.5);
-        opacity: 0.5;
+        opacity: 0.6;
       }
       100% {
         transform: translateY(0) scale(1);
